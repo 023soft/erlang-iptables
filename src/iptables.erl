@@ -43,7 +43,7 @@ append(Chain, Rule) ->
     append(?DEFAULT_TABLE, Chain, Rule).
 
 %% @doc Append rule to the end of the selected chain of the selected table.
--spec append(Table :: table(), Chain :: chain(), Rule :: string()) 
+-spec append(Table :: table(), Chain :: chain(), Rule :: string())
         -> {ok, string()}.
 append(Table, Chain, Rule) ->
     T = atom_to_list(Table),
@@ -97,7 +97,7 @@ insert(Table, Chain, Rule, Pos) ->
     C = string:to_upper(atom_to_list(Chain)),
     {ok, ?CMD(?BIN ++ " -t " ++ T ++ " --insert " ++ C ++ " " ++
                                   integer_to_list(Pos) ++ " " ++ Rule)}.
- 
+
 %% @doc Print all rules in the selected chain.
 %%      If no chain is selected, all chains are printed like iptables-save.
 -spec list() -> {ok, string()}.
