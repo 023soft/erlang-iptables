@@ -4,3 +4,5 @@ ebin/
 doc/
 .eunit/
 TODO.md
+*.xml
+_build/

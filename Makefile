@@ -1,28 +1,46 @@
-REBAR=rebar
+PACKAGE         ?= iptables
+VERSION         ?= $(shell git describe --tags)
+BASE_DIR         = $(shell pwd)
+ERLANG_BIN       = $(shell dirname $(shell which erl))
+REBAR            = $(shell pwd)/rebar3
+MAKE						 = make
 
-DIALYZER=dialyzer
-DIALYZER_OPTS=-Wno_return -Wrace_conditions -Wunderspecs -Wno_undefined_callbacks --fullpath
-
-.PHONY: all clean compile console dialyze doc test
+.PHONY: rel deps test eqc plots
 
 all: compile
 
-clean:
-	@$(REBAR) clean
+##
+## Compilation targets
+##
 
 compile:
-	@$(REBAR) compile
+	$(REBAR) compile
 
-doc:
-	@$(REBAR) doc
+clean: packageclean
+	$(REBAR) clean
 
-test:
-	@$(REBAR) eunit skip_deps=true
+packageclean:
+	rm -fr *.deb
+	rm -fr *.tar.gz
 
-dialyze: compile
-	@$(DIALYZER) $(DIALYZER_OPTS) -r ./ebin
+##
+## Test targets
+##
 
-deploy:
-	@git tag `grep -E -o '[0-9]\.[0-9]\.[0-9]{1,2}' src/iptables.app.src`
-	@git push --tags origin master
+check: test xref dialyzer lint
 
+test: eunit ct
+
+eunit:
+	${REBAR} as test eunit
+
+ct:
+	${REBAR} as test ct
+
+lint:
+	${REBAR} as lint lint
+
+shell:
+	${REBAR} shell --apps iptables
+
+include tools.mk
