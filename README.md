@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vitorenesduarte/erlang-iptables.svg?branch=master)](https://travis-ci.org/vitorenesduarte/erlang-iptables/)
+
 erlang-iptables
 ===============
 
