@@ -18,9 +18,9 @@
 -export([rename_chain/2,     rename_chain/3]).
 -export([policy/2, policy/3, is_installed/0]).
 
-%% Default command: iptables
+%% Default command: sudo iptables
 -ifndef(BIN).
--define(BIN, "iptables").
+-define(BIN, "sudo iptables").
 -endif.
 
 %% Default table: filter
