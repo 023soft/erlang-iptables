@@ -18,9 +18,9 @@
 -export([rename_chain/2,     rename_chain/3]).
 -export([policy/2, policy/3, is_installed/0]).
 
-%% Default command: sudo iptables
+%% Default command: iptables
 -ifndef(BIN).
--define(BIN, "sudo iptables").
+-define(BIN, "iptables").
 -endif.
 
 %% Default table: filter
@@ -35,7 +35,6 @@
 -endif.
 
 -include_lib("include/iptables.hrl").
-
 
 %% @doc Append rule to the end of the selected chain of the default table.
 -spec append(Chain :: chain(), Rule :: string()) -> {ok, string()}.
