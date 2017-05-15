@@ -27,8 +27,8 @@ delete_test_() -> [
 insert_test_() -> [
      ?_assertEqual({ok, "sudo iptables -t filter --insert INPUT 1 -i lo -j ACCEPT"},
         iptables:insert(input, "-i lo -j ACCEPT")),
-     ?_assertEqual({ok, "sudo iptables -t nat --insert PREROUTING 1 -i eth0 -j ACCEPT"},
-        iptables:insert(nat, prerouting, "-i eth0 -j ACCEPT")),
+     ?_assertEqual({ok, "sudo iptables -t filter --insert PREROUTING 1 -i eth0 -j ACCEPT"},
+        iptables:insert(prerouting, "-i eth0 -j ACCEPT", 1)),
      ?_assertEqual({ok, "sudo iptables -t nat --insert PREROUTING 10 -i eth0 -j ACCEPT"},
         iptables:insert(nat, prerouting, "-i eth0 -j ACCEPT", 10))
     ].
