@@ -85,10 +85,10 @@ delete(Table, Chain, Rule) ->
 insert(Chain, Rule) ->
     insert(?DEFAULT_TABLE, Chain, Rule, 1).
 
--spec insert(Table :: table(), Chain :: chain(), Rule :: string())
+-spec insert(Chain :: chain(), Rule :: string(), Pos :: integer())
         -> {ok, string()}.
-insert(Table, Chain, Rule) ->
-    insert(Table, Chain, Rule, 1).
+insert(Chain, Rule, Pos) ->
+    insert(?DEFAULT_TABLE, Chain, Rule, Pos).
 
 -spec insert(Table :: table(), Chain :: chain(),
              Rule :: string(), Pos :: integer()) -> {ok, string()}.
