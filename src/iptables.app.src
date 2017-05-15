@@ -1,11 +1,9 @@
-{application, iptables,
- [
-  {description, "iptables wrapper for erlang"},
-  {vsn, "0.1.0"},
-  {registered, []},
-  {applications, [
-                  kernel,
-                  stdlib
-                 ]},
-  {env, []}
- ]}.
+{application,iptables,
+             [{description,"iptables wrapper for erlang"},
+              {vsn,"0.1.1"},
+              {registered,[]},
+              {applications,[kernel,stdlib]},
+              {maintainers,["Eugene Kalinin"]},
+              {licenses,["MIT"]},
+              {links,[{"GitHub",
+                       "https://github.com/vitorenesduarte/erlang-iptables"}]}]}.
