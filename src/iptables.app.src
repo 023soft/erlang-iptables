@@ -1,6 +1,6 @@
 {application,iptables,
              [{description,"iptables wrapper for erlang"},
-              {vsn,"0.1.1"},
+              {vsn,"0.1.2"},
               {registered,[]},
               {applications,[kernel,stdlib]},
               {maintainers,["Eugene Kalinin"]},
